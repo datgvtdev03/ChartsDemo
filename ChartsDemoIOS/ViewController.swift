@@ -16,21 +16,21 @@ class ViewController: UIViewController  {
 //    B1: Khởi tạo data
         initChartData()
 //    B2: Tạo 1 biểu đồ ChartView
-        chartView = UIView(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 200))
-        chartView.backgroundColor = .lightGray
+        chartView = UIView(frame: CGRect(x: 20, y: 50, width: self.view.frame.width, height: 200))
+        chartView.backgroundColor = .white
 //    B3: Add chartView vào View Cha
         self.view.addSubview(chartView)
 //    B4: vẽ Biểu đồ
         drawChart()
         drawChartLabels()
-    }
+        drawYLabels()    }
 //    Hàm vẽ biểu đồ
     func drawChart() {
         for (i, currentData) in chartDataSourse.enumerated() {
             let currentX = 15 + (i * 30)
             let currentHeight = (currentData.value/maxValueInChart()) * (chartView.frame.height * 0.9)
             let currentY = chartView.frame.height - currentHeight
-            let currentColumn = UIView(frame: CGRect(x: Double(currentX), y: currentY, width: 25, height: currentHeight))
+            let currentColumn = UIView(frame: CGRect(x: Double(currentX + 30), y: currentY, width: 25, height: currentHeight))
             currentColumn.backgroundColor = currentData.color
             chartView.addSubview(currentColumn)
         }
@@ -47,7 +47,7 @@ class ViewController: UIViewController  {
     
     func drawChartLabels(){
         for (i, currentData) in chartDataSourse.enumerated() {
-            let labelX = 15 + (i * 30)
+            let labelX = 15 + (i * 30) + 30
             let labelY = chartView.frame.height
             
             let valueX = UILabel(frame: CGRect(x: labelX , y: Int(labelY), width: 25, height: 20))
@@ -57,8 +57,47 @@ class ViewController: UIViewController  {
             valueX.textColor = .black
             chartView.addSubview(valueX)
             
+            let valueY = UILabel(frame: CGRect(x: labelX, y: Int(labelY - (currentData.value/maxValueInChart()) * (chartView.frame.height * 0.9)) - 15, width: 30, height: 20))
+            valueY.text = String(currentData.value)
+            valueY.textAlignment = .center
+            valueY.font = UIFont.systemFont(ofSize: 7)
+            valueY.textColor = .black
+            chartView.addSubview(valueY)
+            
         }
     }
+    
+    func drawYLabels() {
+   
+        let maxChartValue = chartDataSourse.map { $0.value }.max() ?? 0
+        let values: [Int] = initYValues(maxValue: Int(maxChartValue))
+        let maxValue = CGFloat(maxValueInChart())
+        let chartHeight = chartView.frame.height * 0.9
+        
+        for value in values {
+            let labelY = chartView.frame.height - (CGFloat(value) / maxValue) * chartHeight - 20
+            
+            let label = UILabel(frame: CGRect(x: 0, y: labelY, width: 30, height: 20))
+            label.text = String(value)
+            label.textAlignment = .right
+            label.font = UIFont.systemFont(ofSize: 8)
+            label.textColor = .black
+            
+            chartView.addSubview(label)
+        }
+    }
+    
+    func initYValues(maxValue: Int) -> [Int] {
+        let numberOfStep = 6
+        var values: [Int] = []
+        let stepValue = maxValue / (numberOfStep - 1)
+        for i in 0..<numberOfStep  {
+            let value = stepValue * i
+            values.append(value)
+        }
+        return values
+    }
+    
     func initChartData() {
         let thang1 = ChartData(type: "T1", value: 12000, color: .red)
         let thang2 = ChartData(type: "T2", value: 20000, color: .green)
