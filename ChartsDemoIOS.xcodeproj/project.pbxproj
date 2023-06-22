@@ -16,6 +16,7 @@
 		9B9AE8DE2A3A0CAD00D9857D /* ChartsDemoIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AE8DD2A3A0CAD00D9857D /* ChartsDemoIOSTests.swift */; };
 		9B9AE8E82A3A0CAD00D9857D /* ChartsDemoIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AE8E72A3A0CAD00D9857D /* ChartsDemoIOSUITests.swift */; };
 		9B9AE8EA2A3A0CAD00D9857D /* ChartsDemoIOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AE8E92A3A0CAD00D9857D /* ChartsDemoIOSUITestsLaunchTests.swift */; };
+		9BD3A23C2A40BE420073156C /* ChartsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD3A23B2A40BE420073156C /* ChartsDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		9B9AE8E32A3A0CAD00D9857D /* ChartsDemoIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChartsDemoIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9AE8E72A3A0CAD00D9857D /* ChartsDemoIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDemoIOSUITests.swift; sourceTree = "<group>"; };
 		9B9AE8E92A3A0CAD00D9857D /* ChartsDemoIOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDemoIOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9BD3A23B2A40BE420073156C /* ChartsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDataModel.swift; sourceTree = "<group>"; };
+		9BD3A23D2A40CC2D0073156C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 		9B9AE8BA2A3A0CAB00D9857D = {
 			isa = PBXGroup;
 			children = (
+				9BD3A23D2A40CC2D0073156C /* README.md */,
 				9B9AE8C52A3A0CAB00D9857D /* ChartsDemoIOS */,
 				9B9AE8DC2A3A0CAD00D9857D /* ChartsDemoIOSTests */,
 				9B9AE8E62A3A0CAD00D9857D /* ChartsDemoIOSUITests */,
@@ -99,6 +103,7 @@
 		9B9AE8C52A3A0CAB00D9857D /* ChartsDemoIOS */ = {
 			isa = PBXGroup;
 			children = (
+				9BD3A23A2A40BE180073156C /* Model */,
 				9B9AE8C62A3A0CAB00D9857D /* AppDelegate.swift */,
 				9B9AE8C82A3A0CAB00D9857D /* SceneDelegate.swift */,
 				9B9AE8CA2A3A0CAB00D9857D /* ViewController.swift */,
@@ -125,6 +130,14 @@
 				9B9AE8E92A3A0CAD00D9857D /* ChartsDemoIOSUITestsLaunchTests.swift */,
 			);
 			path = ChartsDemoIOSUITests;
+			sourceTree = "<group>";
+		};
+		9BD3A23A2A40BE180073156C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BD3A23B2A40BE420073156C /* ChartsDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +228,9 @@
 				Base,
 			);
 			mainGroup = 9B9AE8BA2A3A0CAB00D9857D;
+			packageReferences = (
+				9B9AE8F62A3A0CF900D9857D /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 9B9AE8C42A3A0CAB00D9857D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD3A23C2A40BE420073156C /* ChartsDataModel.swift in Sources */,
 				9B9AE8CB2A3A0CAB00D9857D /* ViewController.swift in Sources */,
 				9B9AE8C72A3A0CAB00D9857D /* AppDelegate.swift in Sources */,
 				9B9AE8C92A3A0CAB00D9857D /* SceneDelegate.swift in Sources */,
@@ -596,6 +613,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9B9AE8F62A3A0CF900D9857D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 9B9AE8BB2A3A0CAB00D9857D /* Project object */;
 }

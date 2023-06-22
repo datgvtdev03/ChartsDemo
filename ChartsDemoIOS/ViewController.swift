@@ -22,6 +22,7 @@ class ViewController: UIViewController  {
         self.view.addSubview(chartView)
 //    B4: vẽ Biểu đồ
         drawChart()
+        drawChartLabels()
     }
 //    Hàm vẽ biểu đồ
     func drawChart() {
@@ -34,7 +35,6 @@ class ViewController: UIViewController  {
             chartView.addSubview(currentColumn)
         }
     }
-    
     func maxValueInChart() -> Double {
         var maxValue = chartDataSourse[0].value
         for data in chartDataSourse {
@@ -44,13 +44,28 @@ class ViewController: UIViewController  {
         }
         return maxValue
     }
+    
+    func drawChartLabels(){
+        for (i, currentData) in chartDataSourse.enumerated() {
+            let labelX = 15 + (i * 30)
+            let labelY = chartView.frame.height
+            
+            let valueX = UILabel(frame: CGRect(x: labelX , y: Int(labelY), width: 25, height: 20))
+            valueX.text = currentData.type
+            valueX.textAlignment = .center
+            valueX.font = UIFont.systemFont(ofSize: 10)
+            valueX.textColor = .black
+            chartView.addSubview(valueX)
+            
+        }
+    }
     func initChartData() {
-        let thang1 = ChartData(type: "Thang 1", value: 12000, color: .red)
-        let thang2 = ChartData(type: "Thang 2", value: 20000, color: .green)
-        let thang3 = ChartData(type: "Thang 3", value: 15000, color: .yellow)
-        let thang4 = ChartData(type: "Thang 4", value: 19000, color: .orange)
-        let thang5 = ChartData(type: "Thang 5", value: 7000, color: .systemPink)
-        let thang6 = ChartData(type: "Thang 6", value: 5000, color: .blue)
+        let thang1 = ChartData(type: "T1", value: 12000, color: .red)
+        let thang2 = ChartData(type: "T2", value: 20000, color: .green)
+        let thang3 = ChartData(type: "T3", value: 15000, color: .yellow)
+        let thang4 = ChartData(type: "T4", value: 19000, color: .orange)
+        let thang5 = ChartData(type: "T5", value: 7000, color: .systemPink)
+        let thang6 = ChartData(type: "T6", value: 5000, color: .blue)
     
         chartDataSourse.append(thang1)
         chartDataSourse.append(thang2)
